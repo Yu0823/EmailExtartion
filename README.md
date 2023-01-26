@@ -1,4 +1,4 @@
-# EmailExtartion
+# EmailExtraction
 
 ## enviroment
 
