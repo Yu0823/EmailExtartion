@@ -18,12 +18,14 @@ if __name__ == '__main__':
 '''
 get the num of total emails in the raw input
 '''
-@app.route('/email_extract', methods=["POST"])
+@app.route('/email_extract', methods=["PUT", "POST"])
 def email_extract():
     if request.method == 'POST':
         dic = json.loads(request.get_data())
         raw = dic['raw_text']
-        num = extract_emails(raw)
+    elif request.method == "PUT":
+        raw = request.args.get('raw_text')
+    num = extract_emails(raw)
     ans = {"total_email_ids": num}
     return jsonify(ans)
 
